@@ -5,12 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bay Hodge — Data Scientist</title>
   <meta name="description" content="Data scientist building predictive models and data infrastructure at the intersection of finance and machine learning.">
+  <meta name="theme-color" content="#0c0e14">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+  <!-- Sticky Nav -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <span class="nav-name">Bay Hodge</span>
+      <div class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
 
   <main>
 
@@ -47,12 +62,12 @@
     <!-- Featured Projects -->
     <section class="section section-alt" id="projects">
       <div class="container">
-        <h2 class="section-heading">Featured Projects</h2>
+        <h2 class="section-heading reveal">Featured Projects</h2>
 
-        <div class="featured-projects">
+        <div class="featured-projects stagger">
 
           <!-- TSA Forecast -->
-          <div class="featured-card">
+          <div class="featured-card reveal">
             <div class="featured-thumbnail">
               <img src="assets/images/tsa-forecast-chart.png" alt="TSA checkpoint forecasting error chart" loading="lazy">
             </div>
@@ -73,7 +88,7 @@
           </div>
 
           <!-- Insurance Hedging Simulator -->
-          <div class="featured-card">
+          <div class="featured-card reveal">
             <div class="featured-thumbnail">
               <img src="assets/images/hedging-simulator.png" alt="Yield curve scenario analysis" loading="lazy">
             </div>
@@ -93,14 +108,14 @@
             </div>
           </div>
 
-          <!-- Film ↔ Books -->
-          <div class="featured-card">
+          <!-- Film to Books -->
+          <div class="featured-card reveal">
             <div class="featured-thumbnail">
-              <img src="assets/images/film-to-books.png" alt="Film ↔ Books app interface" loading="lazy">
+              <img src="assets/images/film-to-books.png" alt="Film to Books app interface" loading="lazy">
             </div>
             <div class="featured-body">
               <span class="featured-label badge-swe">Software Engineering</span>
-              <h3 class="featured-title">Film ↔ Books</h3>
+              <h3 class="featured-title">Film &#8596; Books</h3>
               <p class="featured-desc">AI-powered cross-media recommendations — get book recs from your Letterboxd taste or film recs from your Goodreads, powered by Claude.</p>
               <div class="project-tags">
                 <span>Python</span><span>JavaScript</span><span>Vercel</span><span>Claude API</span><span>GitHub Actions</span>
@@ -125,10 +140,10 @@
     <!-- Experience -->
     <section class="section" id="experience">
       <div class="container">
-        <h2 class="section-heading">Experience</h2>
+        <h2 class="section-heading reveal">Experience</h2>
         <div class="timeline">
 
-          <div class="timeline-item">
+          <div class="timeline-item reveal-left">
             <div class="timeline-marker"></div>
             <div class="timeline-content">
               <h3 class="timeline-company">Penn Mutual Asset Management</h3>
@@ -140,7 +155,7 @@
             </div>
           </div>
 
-          <div class="timeline-item">
+          <div class="timeline-item reveal-left">
             <div class="timeline-marker"></div>
             <div class="timeline-content">
               <h3 class="timeline-company">Lenovo</h3>
@@ -159,10 +174,10 @@
     <!-- Education -->
     <section class="section section-alt" id="education">
       <div class="container">
-        <h2 class="section-heading">Education</h2>
+        <h2 class="section-heading reveal">Education</h2>
         <div class="timeline">
 
-          <div class="timeline-item">
+          <div class="timeline-item reveal-left">
             <div class="timeline-marker"></div>
             <div class="timeline-content">
               <h3 class="timeline-company">The University of Chicago</h3>
@@ -174,7 +189,7 @@
             </div>
           </div>
 
-          <div class="timeline-item">
+          <div class="timeline-item reveal-left">
             <div class="timeline-marker"></div>
             <div class="timeline-content">
               <h3 class="timeline-company">The University of Chicago</h3>
@@ -193,18 +208,18 @@
     <!-- More Projects -->
     <section class="section" id="more-projects">
       <div class="container">
-        <h2 class="section-heading">More Projects</h2>
+        <h2 class="section-heading reveal">More Projects</h2>
 
-        <div class="filter-bar">
+        <div class="filter-bar reveal">
           <button class="filter-btn active" data-filter="all">All</button>
           <button class="filter-btn" data-filter="ds-ml">Data Science &amp; ML</button>
           <button class="filter-btn" data-filter="finance">Finance &amp; Quantitative</button>
           <button class="filter-btn" data-filter="software">Software Engineering</button>
         </div>
 
-        <div class="projects-grid">
+        <div class="projects-grid stagger">
 
-          <div class="project-card" data-category="ds-ml">
+          <div class="project-card reveal" data-category="ds-ml">
             <div class="project-body">
               <span class="project-badge-inline badge-ds">Data Science &amp; ML</span>
               <h3 class="project-title">Gas Price Forecaster & Market Maker</h3>
@@ -221,7 +236,7 @@
             </div>
           </div>
 
-          <div class="project-card" data-category="ds-ml">
+          <div class="project-card reveal" data-category="ds-ml">
             <div class="project-body">
               <span class="project-badge-inline badge-ds">Data Science &amp; ML</span>
               <h3 class="project-title">Evaluating Fine-Tuned GPT Dialogue Models</h3>
@@ -238,7 +253,7 @@
             </div>
           </div>
 
-          <div class="project-card" data-category="ds-ml">
+          <div class="project-card reveal" data-category="ds-ml">
             <div class="project-body">
               <span class="project-badge-inline badge-ds">Data Science &amp; ML</span>
               <h3 class="project-title">Album Review Analysis</h3>
@@ -255,7 +270,7 @@
             </div>
           </div>
 
-          <div class="project-card" data-category="finance">
+          <div class="project-card reveal" data-category="finance">
             <div class="project-body">
               <span class="project-badge-inline badge-finance">Finance &amp; Quantitative</span>
               <h3 class="project-title">Equity Valuation Pipeline</h3>
@@ -272,7 +287,7 @@
             </div>
           </div>
 
-          <div class="project-card" data-category="finance">
+          <div class="project-card reveal" data-category="finance">
             <div class="project-body">
               <span class="project-badge-inline badge-finance">Finance &amp; Quantitative</span>
               <h3 class="project-title">Family Office Data Platform</h3>
@@ -289,7 +304,7 @@
             </div>
           </div>
 
-          <div class="project-card" data-category="software">
+          <div class="project-card reveal" data-category="software">
             <div class="project-body">
               <span class="project-badge-inline badge-swe">Software Engineering</span>
               <h3 class="project-title">Sailing Simulator</h3>
@@ -310,7 +325,7 @@
             </div>
           </div>
 
-          <div class="project-card" data-category="software">
+          <div class="project-card reveal" data-category="software">
             <div class="project-body">
               <span class="project-badge-inline badge-swe">Software Engineering</span>
               <h3 class="project-title">Adventure Game in Haskell</h3>
@@ -327,7 +342,7 @@
             </div>
           </div>
 
-          <div class="project-card" data-category="software">
+          <div class="project-card reveal" data-category="software">
             <div class="project-body">
               <span class="project-badge-inline badge-swe">Software Engineering</span>
               <h3 class="project-title">Parallelized Neural Network for MNIST</h3>
@@ -351,27 +366,27 @@
     <!-- Skills -->
     <section class="section section-alt" id="skills">
       <div class="container">
-        <h2 class="section-heading">Skills</h2>
-        <div class="skills-grid">
-          <div class="skill-group">
+        <h2 class="section-heading reveal">Skills</h2>
+        <div class="skills-grid stagger">
+          <div class="skill-group reveal">
             <h3 class="skill-group-title">Languages</h3>
             <div class="skill-tags">
               <span>Python</span><span>R</span><span>SQL</span><span>Go</span><span>Haskell</span><span>Java</span><span>JavaScript</span>
             </div>
           </div>
-          <div class="skill-group">
+          <div class="skill-group reveal">
             <h3 class="skill-group-title">ML & Statistics</h3>
             <div class="skill-tags">
               <span>Time Series</span><span>Bayesian Inference</span><span>XGBoost</span><span>PyTorch</span><span>TensorFlow</span><span>scikit-learn</span><span>statsmodels</span><span>Monte Carlo</span><span>HuggingFace</span>
             </div>
           </div>
-          <div class="skill-group">
+          <div class="skill-group reveal">
             <h3 class="skill-group-title">Data Engineering</h3>
             <div class="skill-tags">
               <span>Airflow</span><span>dbt</span><span>Snowflake</span><span>PostgreSQL</span><span>Great Expectations</span><span>ETL Pipelines</span>
             </div>
           </div>
-          <div class="skill-group">
+          <div class="skill-group reveal">
             <h3 class="skill-group-title">Tools & Infrastructure</h3>
             <div class="skill-tags">
               <span>Git</span><span>Docker</span><span>GitHub Actions</span><span>Vercel</span><span>Streamlit</span><span>Flask</span><span>pytest</span><span>AWS SageMaker</span>

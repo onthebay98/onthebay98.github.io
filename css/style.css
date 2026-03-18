@@ -1,29 +1,33 @@
 /* ========================================
-   CSS Custom Properties
+   CSS Custom Properties — Dark Theme
    ======================================== */
 
 :root {
-  --color-bg: #ffffff;
-  --color-bg-alt: #f8f9fa;
-  --color-surface: #ffffff;
-  --color-border: #e5e7eb;
-  --color-text: #1f2937;
-  --color-text-muted: #6b7280;
-  --color-heading: #111827;
-  --color-accent: #2563eb;
-  --color-accent-hover: #1d4ed8;
-  --color-accent-soft: #eff6ff;
-  --color-tag-bg: #f3f4f6;
-  --color-tag-text: #374151;
+  --color-bg: #0c0e14;
+  --color-bg-alt: #12141c;
+  --color-surface: #181b26;
+  --color-surface-hover: #1e2130;
+  --color-border: #252836;
+  --color-border-hover: #3a3f54;
+  --color-text: #c8cad4;
+  --color-text-muted: #7d8194;
+  --color-heading: #edeef2;
+  --color-accent: #5b8def;
+  --color-accent-hover: #7aa5ff;
+  --color-accent-soft: rgba(91, 141, 239, 0.08);
+  --color-tag-bg: #1e2130;
+  --color-tag-text: #9ca0b4;
 
-  --color-badge-ds: #2563eb;
-  --color-badge-finance: #059669;
+  --color-badge-ds: #3b6cdb;
+  --color-badge-finance: #0d9668;
   --color-badge-swe: #7c3aed;
 
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'SF Mono', 'Fira Code', 'Consolas', monospace;
 
   --max-width: 1120px;
+
+  --nav-height: 56px;
 }
 
 /* ========================================
@@ -71,6 +75,85 @@ ul {
   list-style: none;
 }
 
+::selection {
+  background: rgba(91, 141, 239, 0.3);
+  color: #fff;
+}
+
+/* ========================================
+   Navigation
+   ======================================== */
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--nav-height);
+  z-index: 100;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease, background 0.3s ease;
+  background: rgba(12, 14, 20, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+}
+
+.nav.visible {
+  transform: translateY(0);
+  border-bottom-color: var(--color-border);
+}
+
+.nav-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-heading);
+  letter-spacing: -0.01em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+}
+
+.nav-links a {
+  font-size: 0.825rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--color-accent);
+  transition: width 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--color-heading);
+}
+
+.nav-links a.active::after {
+  width: 100%;
+}
+
 /* ========================================
    Layout
    ======================================== */
@@ -109,11 +192,61 @@ ul {
 }
 
 /* ========================================
+   Scroll Animations
+   ======================================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Stagger children */
+.stagger > .reveal:nth-child(1) { transition-delay: 0s; }
+.stagger > .reveal:nth-child(2) { transition-delay: 0.08s; }
+.stagger > .reveal:nth-child(3) { transition-delay: 0.16s; }
+.stagger > .reveal:nth-child(4) { transition-delay: 0.24s; }
+.stagger > .reveal:nth-child(5) { transition-delay: 0.32s; }
+.stagger > .reveal:nth-child(6) { transition-delay: 0.4s; }
+.stagger > .reveal:nth-child(7) { transition-delay: 0.48s; }
+.stagger > .reveal:nth-child(8) { transition-delay: 0.56s; }
+
+/* ========================================
    Hero
    ======================================== */
 
 .hero {
-  padding: 72px 0 64px;
+  padding: 80px 0 64px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 600px;
+  background: radial-gradient(ellipse, rgba(91, 141, 239, 0.06) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .hero-content {
@@ -123,6 +256,7 @@ ul {
   align-items: flex-end;
   justify-content: center;
   gap: 60px;
+  position: relative;
 }
 
 .hero-left {
@@ -136,6 +270,12 @@ ul {
   border-radius: 50%;
   object-fit: cover;
   margin: 0 auto 16px;
+  border: 2px solid var(--color-border);
+  transition: border-color 0.3s ease;
+}
+
+.hero-headshot:hover {
+  border-color: var(--color-accent);
 }
 
 .hero-name {
@@ -163,11 +303,12 @@ ul {
 
 .hero-links a {
   color: var(--color-text-muted);
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .hero-links a:hover {
   color: var(--color-accent);
+  transform: translateY(-2px);
 }
 
 .hero-location {
@@ -280,14 +421,15 @@ ul {
   grid-template-columns: 1fr 1fr;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: 8px;
+  border-radius: 10px;
   overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .featured-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  border-color: var(--color-border-hover);
 }
 
 .featured-thumbnail {
@@ -301,33 +443,18 @@ ul {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  background: #0e1117;
+  background: #0a0c12;
+  transition: transform 0.4s ease;
+}
+
+.featured-card:hover .featured-thumbnail img {
+  transform: scale(1.03);
 }
 
 .featured-thumbnail-placeholder {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.featured-thumbnail-placeholder[data-icon="finance"]::before {
-  content: '';
-  width: 64px;
-  height: 64px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='22 7 13.5 15.5 8.5 10.5 2 17'/%3E%3Cpolyline points='16 7 22 7 22 13'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-size: contain;
-  opacity: 0.3;
-}
-
-.featured-thumbnail-placeholder[data-icon="code"]::before {
-  content: '';
-  width: 64px;
-  height: 64px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='16 18 22 12 16 6'/%3E%3Cpolyline points='8 6 2 12 8 18'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-size: contain;
-  opacity: 0.3;
 }
 
 .featured-body {
@@ -422,16 +549,17 @@ ul {
 .project-card {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: 8px;
+  border-radius: 10px;
   overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
   display: flex;
   flex-direction: column;
 }
 
 .project-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  border-color: var(--color-border-hover);
 }
 
 .project-card.hidden {
@@ -494,6 +622,7 @@ ul {
   font-family: var(--font-mono);
   padding: 4px 8px;
   border-radius: 4px;
+  border: 1px solid var(--color-border);
 }
 
 /* Links */
@@ -516,54 +645,6 @@ ul {
 
 .project-links a:hover {
   color: var(--color-accent-hover);
-}
-
-/* ========================================
-   Education
-   ======================================== */
-
-.education-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-}
-
-.education-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  padding: 24px;
-}
-
-.education-school {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: var(--color-heading);
-  margin-bottom: 4px;
-}
-
-.education-degree {
-  font-size: 1rem;
-  color: var(--color-accent);
-  margin-bottom: 4px;
-}
-
-.education-date {
-  font-size: 0.875rem;
-  color: var(--color-text-muted);
-  margin-bottom: 8px;
-}
-
-.education-detail {
-  font-size: 0.9rem;
-  color: var(--color-text);
-  margin-bottom: 8px;
-}
-
-.education-courses {
-  font-size: 0.85rem;
-  color: var(--color-text-muted);
-  line-height: 1.5;
 }
 
 /* ========================================
@@ -596,6 +677,13 @@ ul {
   padding: 6px 12px;
   border-radius: 6px;
   font-weight: 500;
+  border: 1px solid var(--color-border);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.skill-tags span:hover {
+  border-color: var(--color-border-hover);
+  color: var(--color-text);
 }
 
 /* ========================================
@@ -603,8 +691,9 @@ ul {
    ======================================== */
 
 .footer {
-  background: var(--color-heading);
-  color: #ffffff;
+  background: var(--color-bg-alt);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text);
   padding: 40px 0 32px;
   text-align: center;
 }
@@ -617,17 +706,18 @@ ul {
 }
 
 .footer-links a {
-  color: rgba(255, 255, 255, 0.7);
-  transition: color 0.2s ease;
+  color: var(--color-text-muted);
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .footer-links a:hover {
-  color: #ffffff;
+  color: var(--color-accent);
+  transform: translateY(-2px);
 }
 
 .footer-copy {
   font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--color-text-muted);
 }
 
 /* ========================================
@@ -669,8 +759,12 @@ ul {
     gap: 24px;
   }
 
-  .education-grid {
-    grid-template-columns: 1fr;
+  .nav-links {
+    gap: 16px;
+  }
+
+  .nav-links a {
+    font-size: 0.75rem;
   }
 }
 
@@ -696,5 +790,17 @@ ul {
     left: -30px;
     width: 10px;
     height: 10px;
+  }
+
+  .nav-name {
+    font-size: 0.85rem;
+  }
+
+  .nav-links {
+    gap: 12px;
+  }
+
+  .nav-links a {
+    font-size: 0.7rem;
   }
 }
