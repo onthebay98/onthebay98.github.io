@@ -122,6 +122,14 @@ ul {
   margin: 0 auto;
 }
 
+.hero-headshot {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 20px;
+}
+
 .hero-name {
   font-size: clamp(2rem, 5vw, 2.75rem);
   font-weight: 700;
